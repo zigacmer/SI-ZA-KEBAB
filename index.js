@@ -25,16 +25,29 @@ window.addEventListener('mousemove', (e) => {
     const dy = y - buttonCenterY;
     const distance = Math.sqrt(dx * dx + dy * dy);
 
-
     if (distance < offset) {
         const angle = Math.atan2(dy, dx);
-        const newX = buttonBox.left - Math.cos(angle) * moveMagnitude;
-        const newY = buttonBox.top - Math.sin(angle) * moveMagnitude;
+        let newX = buttonBox.left - Math.cos(angle) * moveMagnitude;
+        let newY = buttonBox.top - Math.sin(angle) * moveMagnitude;
 
-        const finalX = Math.max(0, Math.min(window.innerWidth - buttonBox.width, newX));
-        const finalY = Math.max(0, Math.min(window.innerHeight - buttonBox.height, newY));
+        let touchEdgeCount = 0;
 
-        button.style.left = `${finalX}px`;
-        button.style.top = `${finalY}px`;
+
+        if (newX <= 0 || newX >= window.innerWidth - buttonBox.width) touchEdgeCount++;
+        if (newY <= 0 || newY >= window.innerHeight - buttonBox.height) touchEdgeCount++;
+
+        if (touchEdgeCount >= 2) {
+
+            const centerX = (window.innerWidth - buttonBox.width) / 2;
+            const centerY = (window.innerHeight - buttonBox.height) / 2;
+            button.style.left = `${centerX}px`;
+            button.style.top = `${centerY}px`;
+        } else {
+
+            newX = Math.max(0, Math.min(window.innerWidth - buttonBox.width, newX));
+            newY = Math.max(0, Math.min(window.innerHeight - buttonBox.height, newY));
+            button.style.left = `${newX}px`;
+            button.style.top = `${newY}px`;
+        }
     }
 });
