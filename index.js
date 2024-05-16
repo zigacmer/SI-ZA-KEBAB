@@ -8,7 +8,6 @@ button.addEventListener('click', () => {
 });
 
 buttonYes.addEventListener('click', () => {
-    alert('za tu al po pes\nmcken pekoci?\ncitiri euro\ndober tek ♥')
     window.location='yes.html';
 });
 
