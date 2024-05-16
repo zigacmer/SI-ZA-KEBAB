@@ -24,11 +24,21 @@
             left: 50%;
         }
         
-        
-        h1 {
-            font-size: 100px;
+        h1  {
             color: #00420c;
+            font-size: 100px;
         }
+       
+
+        @media screen and (max-width: 768px) {
+        h1 {
+             font-size: 400%;
+             background: -webkit-linear-gradient(#00420c, red);
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+        }
+        }
+
     </style>
 </head>
 
