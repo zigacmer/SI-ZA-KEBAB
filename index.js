@@ -8,7 +8,8 @@ button.addEventListener('click', () => {
 });
 
 buttonYes.addEventListener('click', () => {
-    alert('za tu al po pes\nmcken pekoci?\ncitiri euro\ndober tek ♥');
+    alert('za tu al po pes\nmcken pekoci?\ncitiri euro\ndober tek ♥')
+    window.location='yes.html';
 });
 
 window.addEventListener('mousemove', (e) => {
@@ -50,4 +51,12 @@ window.addEventListener('mousemove', (e) => {
             button.style.top = `${newY}px`;
         }
     }
+});
+
+window.addEventListener('touchstart', (e) => {
+    const x = e.touches[0].clientX;
+    const y = e.touches[0].clientY;
+
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
 });
